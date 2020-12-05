@@ -55,7 +55,7 @@ def calc(item):
 # 入力値が文字列なので、数値変換が可能な値なら変換した値を返す
 def num_check(num_object, message_item):
     check = False
-    while(check == False):
+    while(not check):
         if not num_object or not num_object.isdecimal():
             num_object = input("不正な値です{}は半角数字で入力してください：".format(message_item))
         else:
@@ -65,7 +65,7 @@ def num_check(num_object, message_item):
 def pay_check(pay_object, total_price):
     pay_object = num_check(pay_object, "金額")
     check = False
-    while(check == False):
+    while(not check):
         if (int(pay_object) - total_price) < 0:
             pay_object = input("金額が足りません。もう一度入力してください：")
         else:
@@ -85,7 +85,7 @@ def main():
 
     # オーダー表示
     order_result = False
-    while(order_result == False):
+    while(not order_result):
         custommer_order = input("ご注文を商品番号でどうぞ：")
         order.add_item_order(custommer_order)
         if order.view_item_list():
